@@ -1,0 +1,9 @@
+h3 List books in library
+a(href="/books") Back
+ul
+  each book in books
+    li= book.title
+      span 
+      a(href=`/books/delete/${book.id}`) Delete
+      span 
+      a(href=`/books/update/${book.id}`) Update

@@ -13,7 +13,9 @@ const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync("db.json");
 const db = low(adapter);
 
-db.defaults({ todos: ["Học code tại CodersX"] }).write();
+db.defaults({
+  todos: [{ id: Date.parse(new Date()), content: "Học code tại CodersX" }]
+}).write();
 // lowdb-end
 
 app.set("view engines", "pug");
@@ -36,16 +38,27 @@ app.get("/todos", (req, res) => {
 
 app.get("/todos/search", (req, res) => {
   const qValue = req.query.q.toLowerCase();
-  const newTodoList = todoList.filter(item => item.toLowerCase().includes(qValue));
+  const newTodoList = todoList.filter(({content}) =>
+    content.toLowerCase().includes(qValue)
+  );
   res.render("./todos/search.pug", {
     newTodoList
   });
 });
 
+app.get('/todos/:id/delete', (req, res) => {
+  const id = parseInt(req.params.id);
+  db.get('todos')
+    .remove({ id })
+    .write()
+  res.redirect('/todos');
+});
+
 app.post("/todos/create", (req, res) => {
   const value = req.body.todo;
+  const newTodo = {id: Date.parse(new Date()), content: value};
   db.get("todos")
-    .push(value)
+    .push(newTodo)
     .write();
   res.redirect("/todos");
 });

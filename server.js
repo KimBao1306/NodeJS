@@ -5,8 +5,8 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const routeBooks = require("./routes/books.route.js");
-const routeUser = require("./routes/user.route.js");
-const routeTransaction = require("./routes/transactions.route.js");
+const routeUsers = require("./routes/users.route.js");
+const routeTransactions = require("./routes/transactions.route.js");
 
 const app = express();
 
@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/books", routeBooks);
-app.use("/user", routeUser);
-app.use('/transactions', routeTransaction);
+app.use("/users", routeUsers);
+app.use('/transactions', routeTransactions);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

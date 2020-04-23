@@ -1,9 +1,0 @@
-h3 List user in system
-a(href="/user") Back
-ul
-  each user in users
-    li= user.name
-      span 
-      a(href=`/user/delete/${user.id}`) Delete
-      span 
-      a(href=`/user/update/${user.id}`) Update

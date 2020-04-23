@@ -1,5 +1,5 @@
 const express = require("express");
-const controller = require("../controller/books.controller.js");
+const controller = require("../controller/users.controller.js");
 
 const route = express.Router();
 
@@ -9,7 +9,7 @@ route.get("/show", controller.show);
 
 route.get("/delete/:id", controller.delete);
 
-//nếu để sau /books/update/:id thì sẽ bị :id viết đè
+//nếu để sau :/books/update/:id thì
 route.get("/update/result", controller.updateResult);
 
 route.get("/update/:id", controller.update);

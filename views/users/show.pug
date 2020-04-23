@@ -1,0 +1,9 @@
+h3 List user in system
+a(href="/users") Back
+ul
+  each user in users
+    li= user.name
+      span 
+      a(href=`/users/delete/${user.id}`) Delete
+      span 
+      a(href=`/users/update/${user.id}`) Update

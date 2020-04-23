@@ -17,8 +17,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/todos", (req, res) => {
+  const qValue = req.query.q.toLowerCase();
+  const newTodoList = todoList.filter(item => item.toLowerCase().includes(qValue));
   res.render('todos.pug', {
-    todoList
+    newTodoList
   })
 })
 

@@ -1,0 +1,14 @@
+h3 Create new transaction
+
+a(href="/transactions") Back
+
+form(action="/transactions/create/result", method="post")
+  div
+    select(name="user")
+      each user in users
+        option(value= `${user.id}`)= user.id
+  div
+    select(name="book")
+      each book in books
+        option(value= `${book.id}`)= book.id
+  button Create

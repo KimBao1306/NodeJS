@@ -6,6 +6,7 @@
 const express = require("express");
 const routeBooks = require("./routes/books.route.js");
 const routeUser = require("./routes/user.route.js");
+const routeTransaction = require("./routes/transactions.route.js");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/books", routeBooks);
 app.use("/user", routeUser);
+app.use('/transactions', routeTransaction);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

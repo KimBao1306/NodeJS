@@ -61,7 +61,6 @@ route.get("/create", (req, res) => {
 
 route.post("/create/result", (req, res) => {
   const name = req.body.name;
-  console.log(name);
   const id = Date.parse(new Date());
   const newUser = { id, name };
   db.get("users")

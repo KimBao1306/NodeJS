@@ -1,0 +1,17 @@
+h3 List transaction
+a(href="/") Back
+
+table(style="width: 100%; table-layout: fixed;")
+  thead
+    tr
+      th ID 
+      th ID User
+      th ID Book
+  tbody
+    each trans in transactions
+      tr
+          td= trans.id
+          td= trans.idUser
+          td= trans.idBook
+br
+a(href='/transactions/create') Create new

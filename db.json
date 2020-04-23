@@ -1,10 +1,9 @@
 {
-  "books": [
+  "books": [],
+  "users": [
     {
-      "id": 1587633062000,
-      "title": "Hỗ trợ học",
-      "desc": "học tài thi phận là học tài thi phận"
+      "id": 1587579900000,
+      "name": "Kim Bao"
     }
-  ],
-  "users": []
+  ]
 }

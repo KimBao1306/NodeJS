@@ -1,9 +1,9 @@
 {
   "books": [
     {
-      "id": 1587637638000,
-      "title": "Hỗ trợ học",
-      "desc": "Hỗ trợ mình học nhé"
+      "id": 1587653518000,
+      "title": "Học lập trình miễn phí tại CodersX",
+      "desc": "Cùng nhau học thất tốt"
     }
   ],
   "users": [
@@ -12,26 +12,5 @@
       "name": "bao"
     }
   ],
-  "transactions": [
-    {
-      "id": 1587637674000,
-      "idUser": "1587637621000",
-      "idBook": "1587637638000"
-    },
-    {
-      "id": 1587637832000,
-      "idUser": "1587637621000",
-      "idBook": "1587637638000"
-    },
-    {
-      "id": 1587637838000,
-      "idUser": "1587637621000",
-      "idBook": "1587637638000"
-    },
-    {
-      "id": 1587637842000,
-      "idUser": "1587637621000",
-      "idBook": "1587637638000"
-    }
-  ]
+  "transactions": []
 }

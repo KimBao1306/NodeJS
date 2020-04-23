@@ -13,13 +13,19 @@ const todoList = ['Đi chợ', 'Nấu cơm', 'Rửa bát', 'Học code tại Cod
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (req, res) => {
-  res.send("I love CodersX");
+  res.render('index.pug');
 });
 
 app.get("/todos", (req, res) => {
+  res.render('./todos/index.pug', {
+    todoList
+  })
+})
+
+app.get("/todos/search", (req, res) => {
   const qValue = req.query.q.toLowerCase();
   const newTodoList = todoList.filter(item => item.toLowerCase().includes(qValue));
-  res.render('todos.pug', {
+  res.render('./todos/search.pug', {
     newTodoList
   })
 })

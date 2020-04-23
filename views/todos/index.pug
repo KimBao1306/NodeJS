@@ -1,0 +1,9 @@
+h1 Todo List
+
+ul
+  each item in todoList
+    li= item
+    
+form(action="/todos/search", method='get')
+  input(type="text", name="q", placeholder="Nhập giá trị tìm kiếm")
+  button= "Tìm kiếm"

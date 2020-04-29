@@ -1,10 +1,16 @@
-h2 Welcom to library
+extends ../layouts/common.pug
 
-p How may I help you?
-ul
-  li 
-    a(href="/books") Books
-  li 
-    a(href="/users") User
-  li 
-    a(href="/transactions") Transactions
+block content
+
+  div(class="container-fluid")
+    div(class="row bg-primary")
+      div(class="col-4")
+        h2(class="text-white") Library
+      div(class="col-8")
+        ul(class="nav justify-content-end")
+          li(class="nav-item")
+            a(class="nav-link text-white", href="/books") Books
+          li 
+            a(class="nav-link text-white", href="/users") User
+          li 
+            a(class="nav-link text-white", href="/transactions") Transactions

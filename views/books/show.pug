@@ -1,21 +1,24 @@
-h3 List books in library
-a(href="/books") Back
-     
-table(style="width: 100%; table-layout: fixed;")
-  thead
-    tr
-      th ID 
-      th Title
-      th Description
-      th
-  tbody
-    each book in books
-      tr
-          td= book.id
-          td= book.title
-          td= book.desc 
-          td
-            span &nbsp;
-            a(href=`/books/${book.id}/delete`) Delete
-            span 
-            a(href=`/books/${book.id}/update`) Update
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 List books in library
+    a(class="d-inline-block mb-2", href="/books") Back
+
+    table(class="table")
+      thead
+        tr
+          th ID 
+          th Title
+          th Description
+          th
+      tbody
+        each book in books
+          tr
+              th= book.id
+              td= book.title
+              td= book.desc 
+              td
+                span &nbsp;
+                a(href=`/books/${book.id}/delete`) Delete
+                span 
+                a(href=`/books/${book.id}/update`) Update

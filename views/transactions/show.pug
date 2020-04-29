@@ -1,31 +1,34 @@
-h3 List transaction
-a(href="/transactions") Back
-
-table(style="width: 100%; table-layout: fixed;")
-  thead
-    tr
-      th ID 
-      th Username
-      th Book
-      th Complete
-  tbody
-    each trans in transactions
-      tr
-          td= trans.id
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 List transaction
+    a(class="d-inline-block mb-2", href="/transactions") Back
+    table(class="table")
+      thead
+        tr
+          th ID 
+          th Username
+          th Book
+          th Complete
+          th
+      each trans in transactions
+        tr
+          th= trans.id
           
           each user in users
             if(user.id === trans.idUser) 
               td= user.name
-            else 
-              td Anonymous
+          break
             
           each book in books
             if(book.id === trans.idBook) 
               td= book.title
-            else 
-              td Anonymous       
+          break
+    
           td= (trans.isComplete) ? 'True' : 'False' 
+          
+          td
+            span &nbsp;
+            a(href=`/transactions/${trans.id}/delete`) Delete
             span &nbsp;
             a(href=`/transactions/${trans.id}/update`) Update
-            span &nbsp;
-            a(href=`/transactions/${trans.id}/delete`) Delete            

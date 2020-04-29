@@ -1,10 +1,12 @@
-h3 Books
-a(href="/") Back
+extends ../../layouts/common.pug
 
-ul
-  li 
-    a(href="/books/show") List books
-  li 
-    a(href="/books/search") Search books
-  li 
-    a(href="/books/create") Create a new book
+block content
+  div(class="container")
+    h3 Books
+    
+    a(class="d-inline-block mb-2", href="/") Back
+    
+    ul(class="list-group")
+      a(class="list-group-item", href="/books/show") List books
+      a(class="list-group-item", href="/books/search") Search books
+      a(class="list-group-item", href="/books/create") Create a new book

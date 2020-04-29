@@ -1,7 +1,10 @@
-h3 Seach your books
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 Seach your books
+    a(class="d-inline-block mb-2 ", href="/books") Back
 
-a(href='/books') Back
-
-form(action="/books/search/result", method="get")
-  input(type='text', name="keyword", placeholder="Your keyword")
-  button Search
+    form(action="/books/search/result", method="get")
+      div(class="form-group d-flex")
+        input(class="form-control mr-2", type='text', name="keyword", placeholder="Your keyword")
+        button(class="btn btn-primary") Search

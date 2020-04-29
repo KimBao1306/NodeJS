@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/books", routeBooks);
 app.use("/users", routeUsers);
-app.use('/transactions', routeTransactions);
+app.use("/transactions", routeTransactions);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

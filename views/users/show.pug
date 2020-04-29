@@ -1,9 +1,22 @@
-h3 List user in system
-a(href="/users") Back
-ul
-  each user in users
-    li= user.name
-      span 
-      a(href=`/users/${user.id}/delete`) Delete
-      span 
-      a(href=`/users/${user.id}/update`) Update
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 List user in library
+    a(class="d-inline-block mb-2", href="/users") Back
+
+    table(class="table")
+      thead
+        tr
+          th ID 
+          th Name
+          th
+      tbody
+         each user in users
+          tr
+              th= user.id
+              td= user.name
+              td
+                span &nbsp;
+                a(href=`/users/${user.id}/delete`) Delete
+                span 
+                a(href=`/users/${user.id}/update`) Update

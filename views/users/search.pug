@@ -1,7 +1,10 @@
-h3 Seach your user
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 Seach your users
+    a(class="d-inline-block mb-2 ", href="/users") Back
 
-a(href='/users') Back
-
-form(action="/users/search/result", method="get")
-  input(type='text', name="name", placeholder="Your name")
-  button Search
+    form(action="/users/search/result", method="get")
+      div(class="form-group d-flex")
+        input(class="form-control mr-2", type='text', name="name", placeholder="Your name")
+        button(class="btn btn-primary") Search

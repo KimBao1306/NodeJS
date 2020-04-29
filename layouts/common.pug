@@ -3,4 +3,18 @@ html
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
     link(rel="stylesheet", href="custom.css")
   body
-    block content
+    .container-fluid
+      .row.bg-primary
+        .col-4
+          h2.text-white Library
+        .col-8
+          ul.nav.justify-content-end
+            li.nav-item
+              a.nav-link.text-white(href="/books") Books
+            li.nav-item
+              a.nav-link.text-white(href="/users") User
+            li.nav-item 
+              a.nav-link.text-white(href="/transactions") Transactions
+    .container
+      .pt-3
+        block content

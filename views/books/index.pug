@@ -1,12 +1,10 @@
 extends ../../layouts/common.pug
 
 block content
-  div(class="container")
+  .container
     h3 Books
-    
-    a(class="d-inline-block mb-2", href="/") Back
-    
-    ul(class="list-group")
-      a(class="list-group-item", href="/books/show") List books
-      a(class="list-group-item", href="/books/search") Search books
-      a(class="list-group-item", href="/books/create") Create a new book
+    a.d-inline-block.mb-2(href="/") Back
+    ul.list-group
+      a.list-group-item(href="/books/show") List books
+      a.list-group-item(href="/books/search") Search books
+      a.list-group-item(href="/books/create") Create a new book

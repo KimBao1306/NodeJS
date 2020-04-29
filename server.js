@@ -14,6 +14,14 @@ app.set("view engine", "pug");
 app.set("views", "./views");
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(express.static("public"));
+//test
+const db = require("./db.js");
+
+const transactions = db.get("transactions").value();
+const users = db.get("users").value();
+const books = db.get("books").value();
+//test=end
 
 app.get("/", (req, res) => {
   res.render("index.pug");

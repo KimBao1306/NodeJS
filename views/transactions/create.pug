@@ -1,14 +1,21 @@
-h3 Create new transaction
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 Create new transaction
+    a(class="d-inline-block mb-2", href="/transactions") Back
 
-a(href="/transactions") Back
-
-form(action="/transactions/create", method="post")
-  div
-    select(name="user")
-      each user in users
-        option(value= `${user.id}`)= user.name
-  div
-    select(name="book")
-      each book in books
-        option(value= `${book.id}`)= book.title
-  button Create
+    form(action="/transactions/create", method="post")
+      div(class="form-group input-group")
+        div(class="input-group-prepend")
+          label(class="input-group-text") Name
+        select(class="custom-select", name="user", id="user")
+          each user in users
+            option(value= `${user.id}`)= user.name
+      div(class="form-group input-group")
+        div(class="input-group-prepend")
+          label(class="input-group-text") Book
+        select(class="custom-select", name="book")
+          each book in books
+            option(value= `${book.id}`)= book.title
+      button(class="btn btn-primary") Create
+      

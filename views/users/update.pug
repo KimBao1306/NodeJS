@@ -1,7 +1,10 @@
-h3 Update your user
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 Update your user
+    a(class="d-inline-block mb-2", href="/users") Back
 
-a(href='/users') Back
-
-form(action=`/users/${updateUser.id}/update`, method="post")
-  input(type='text', name="name", placeholder="Your new name", value=`${updateUser.name}`)
-  button Update
+    form(action=`/users/${updateUser.id}/update`, method="post")
+      div(class="form-group")
+        input(class="form-control", type="text", name="name", placeholder="Your new name", value=`${updateUser.name}`)
+      button(class="btn btn-primary") Update

@@ -1,8 +1,9 @@
-h3 Create new user
-
-a(href='/users') Back
-
-form(action="/users/create", method="post")
-  div
-    input(type='text', name="name", placeholder="Your name")
-  button Create
+extends ../../layouts/common.pug
+block content
+  div(class="container")
+    h3 Create new user
+    a(class="d-inline-block mb-2", href="/users") Back
+    form(action="/users/create", method="post")
+      div(class="form-group")
+        input(class="form-control", type='text', name="name", placeholder="Your name")
+      button(class="btn btn-primary") Create

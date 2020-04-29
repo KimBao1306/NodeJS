@@ -1,17 +1,14 @@
 extends ../layouts/common.pug
 block content
   .container
-    h3 Create new user
-    a.d-inline-block.mb-2(href="/users") Back
+    h3 Login
     
     if errors
       each err in errors
         .alert.alert-danger= err
-    form(action="/users/create", method="post")
-      .form-group
-        input.form-control(type='text', name="name", placeholder="Your name", value= values ? values.name : '' )
+    form(action="/auth/login", method="post")
       .form-group
         input.form-control(type='email', name="email", placeholder="Your email", value= values ? values.email : '' )
       .form-group
         input.form-control(type='password', name="password", placeholder="Your password")
-      button.btn.btn-primary Create
+      button.btn.btn-primary Login

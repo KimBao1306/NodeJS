@@ -9,7 +9,9 @@ const cookieParser = require("cookie-parser");
 const routeBooks = require("./routes/books.route.js");
 const routeUsers = require("./routes/users.route.js");
 const routeTransactions = require("./routes/transactions.route.js");
-const validateCookie = require("./validate/cookies.validate.js");
+const routeAuth = require("./routes/auth.route.js");
+
+const validateAuth = require("./validates/auth.validate.js");
 
 const app = express();
 
@@ -29,16 +31,19 @@ app.use(cookieParser());
 //cài đặt folder tĩnh cho các file css, img, js
 app.use(express.static("public"));
 
-app.get("/", validateCookie.checkCookie, (req, res) => {
-  console.log(`Cookie: ${res.locals.count}`);
-  res.render("index.pug");
+app.get("/", validateAuth.checkLogin, (req, res) => {
+  if(!res.locals.isAdmin) {
+    res.redirect('/transactions');
+  } else {
+    res.redirect('/books');
+  }
 });
 
 //dùng method use để thực thi các route
-app.use("/books", routeBooks);
-app.use("/users", routeUsers);
-app.use("/transactions", routeTransactions);
-
+app.use("/books", validateAuth.checkLogin, validateAuth.isAdmin, routeBooks);
+app.use("/users", validateAuth.checkLogin, validateAuth.isAdmin, routeUsers);
+app.use("/transactions", validateAuth.checkLogin, routeTransactions);
+app.use("/auth", routeAuth);
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);

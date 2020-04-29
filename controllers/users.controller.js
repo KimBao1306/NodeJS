@@ -54,10 +54,21 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.createPost = (req, res) => {
-  const name = res.locals.name;
+  const name = res.locals.u.name;
+  const email = res.locals.u.email;
+  const password = "123123";
+  const isAdmin = 0;
   const id = Date.parse(new Date());
-
-  const newUser = { id, name };
+  
+  if(users.some(u => u.email === email)) {
+    res.render('./users/create.pug', {
+      errors: ["Email used"],
+      values: req.body
+    })
+    return;
+  }
+  
+  const newUser = { id, name, email, password, isAdmin };
   db.get("users")
     .push(newUser)
     .write();

@@ -1,4 +1,4 @@
-const md5 = require('md5');
+const bcrypt = require("bcrypt");
 
 const db = require("../db.js");
 
@@ -56,24 +56,19 @@ module.exports.create = (req, res) => {
   res.render("./users/create.pug");
 };
 
-module.exports.createPost = (req, res) => {
+module.exports.createPost = async (req, res) => {
+  const id = Date.parse(new Date());
   const name = res.locals.u.name;
   const email = res.locals.u.email;
-  const password = md5(res.locals.u.password);
+  const password = await bcrypt.hash(res.locals.u.password, 8);
   const isAdmin = 0;
-  const id = Date.parse(new Date());
-  
-  if(users.some(u => u.email === email)) {
-    res.render('./users/create.pug', {
-      errors: ["Email used"],
-      values: req.body
-    })
-    return;
-  }
-  
-  const newUser = { id, name, email, password, isAdmin };
+  const wrongLoginCount = 0;
+
+  const newUser = { id, name, email, password, isAdmin, wrongLoginCount };
+
   db.get("users")
     .push(newUser)
     .write();
+
   res.redirect("/users/show");
 };

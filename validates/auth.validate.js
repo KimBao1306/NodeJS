@@ -15,17 +15,17 @@ module.exports.checkLogin = (req, res, next) => {
     res.redirect("/auth/login");
     return;
   }
-  
+
   res.locals.isAdmin = user.isAdmin;
-  
+
   next();
 };
 
 module.exports.isAdmin = (req, res, next) => {
-  if(!res.locals.isAdmin) {
-    res.redirect('/transactions');
+  if (!res.locals.isAdmin) {
+    res.redirect("/transactions");
     return;
   }
-  
+
   next();
 };

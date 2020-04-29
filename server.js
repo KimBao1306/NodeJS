@@ -32,10 +32,10 @@ app.use(cookieParser());
 app.use(express.static("public"));
 
 app.get("/", validateAuth.checkLogin, (req, res) => {
-  if(!res.locals.isAdmin) {
-    res.redirect('/transactions');
+  if (!res.locals.isAdmin) {
+    res.redirect("/transactions");
   } else {
-    res.redirect('/books');
+    res.redirect("/books");
   }
 });
 

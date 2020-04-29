@@ -1,4 +1,7 @@
+const md5 = require('md5');
+
 const db = require("../db.js");
+
 const users = db.get("users").value();
 
 module.exports.index = (req, res) => {
@@ -56,7 +59,7 @@ module.exports.create = (req, res) => {
 module.exports.createPost = (req, res) => {
   const name = res.locals.u.name;
   const email = res.locals.u.email;
-  const password = "123123";
+  const password = md5(res.locals.u.password);
   const isAdmin = 0;
   const id = Date.parse(new Date());
   

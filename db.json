@@ -20,24 +20,18 @@
       "isAdmin": 1
     },
     {
-      "id": 1587997525000,
+      "id": 1588068524000,
       "name": "Kim Bao",
       "email": "b@yahoo.com",
-      "password": "123123",
+      "password": "4297f44b13955235245b2497399d7a93",
       "isAdmin": 0
     }
   ],
   "transactions": [
     {
-      "id": 1587984088000,
-      "idUser": 1587984070000,
+      "id": 1588068636000,
+      "idUser": 1588068524000,
       "idBook": 1587653518000,
-      "isComplete": 0
-    },
-    {
-      "id": 1587998035000,
-      "idUser": 1587997525000,
-      "idBook": 1587997442000,
       "isComplete": 0
     }
   ]

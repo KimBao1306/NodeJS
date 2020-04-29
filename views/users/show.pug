@@ -4,6 +4,6 @@ ul
   each user in users
     li= user.name
       span 
-      a(href=`/users/delete/${user.id}`) Delete
+      a(href=`/users/${user.id}/delete`) Delete
       span 
-      a(href=`/users/update/${user.id}`) Update
+      a(href=`/users/${user.id}/update`) Update

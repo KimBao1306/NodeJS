@@ -2,7 +2,9 @@ h3 Update your books
 
 a(href='/books') Back
 
-form(action='/books/update/result', method="get")
-  input(type='text', name="title", placeholder="Your new title", value=`${updateBook.title}`)
-  input(type='hidden', name="id", value=`${updateBook.id}`)
+form(action=`/books/${updateBook.id}/update`, method="post")
+  div
+    input(type='text', name="title", placeholder="Your new title", value=`${updateBook.title}`)
+  div
+    input(type='text', name="desc", placeholder="Your new description", value=`${updateBook.desc}`)
   button Update

@@ -4,20 +4,28 @@ html
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
     link(rel="stylesheet", type="text/css", href="/css/custom.css")
   body
-    .container-fluid
-      .row.bg-primary
-        .col-3
-          h2.text-white Library
-        .col-9
-          ul.nav.justify-content-end.collapse.navbar-collaps
-            li.nav-item
-              a.nav-link.text-white(href="/books") Books
-            li.nav-item
-              a.nav-link.text-white(href="/users") User
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      if user
+        a.navbar-brand(href="/")= user.name
+      else 
+        a.navbar-brand(href="/") CodersX
+      button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarNav
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href="/books") Books
+          li.nav-item
+            a.nav-link(href="/users") User
+          li.nav-item 
+            a.nav-link(href="/transactions") Transactions
+          if user 
             li.nav-item 
-              a.nav-link.text-white(href="/transactions") Transactions
-            li.nav-item 
-              a.nav-link.text-white(href="/auth/logout") Logout
+              a.nav-link(href="/auth/logout") Logout
     .container
       .pt-3
         block content
+    
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")

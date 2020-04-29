@@ -47,7 +47,7 @@ module.exports.loginPost = async (req, res) => {
     return;
   }
 
-  res.cookie("idUser", user.id);
+  res.cookie("idUser", user.id, { signed: true});
 
   res.redirect("/");
 };

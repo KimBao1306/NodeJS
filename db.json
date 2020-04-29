@@ -20,14 +20,6 @@
       "isAdmin": 1
     },
     {
-      "id": 1588094557000,
-      "name": "Kim Bao B",
-      "email": "b@yahoo.com",
-      "password": "$2b$08$vBfglFOZbGozquJE5E9/q.47CX81Iu7G/XRL4b.No.C/eQUXMU3dy",
-      "isAdmin": 0,
-      "wrongLoginCount": 3
-    },
-    {
       "id": 1588094580000,
       "name": "Kim Bao C",
       "email": "c@yahoo.com",

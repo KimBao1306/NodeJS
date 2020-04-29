@@ -17,22 +17,19 @@ const app = express();
 
 //cài view engine pug cho project express
 app.set("view engine", "pug");
-
 //thư mục chứ layout - mặc định bắt đầu bằng ./wiew
 app.set("views", "./views");
-
 //cài đặt middleware cho method post của form
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-//cài đặt middleware cho cookie
-app.use(cookieParser());
+//cài đặt middleware cho cookie, với chuỗi secret
+app.use(cookieParser('lekimbaobaokimle'));
 
 //cài đặt folder tĩnh cho các file css, img, js
 app.use(express.static("public"));
 
 app.get("/", validateAuth.checkLogin, (req, res) => {
-  if (!res.locals.isAdmin) {
+  if (!res.locals.user.isAdmin) {
     res.redirect("/transactions");
   } else {
     res.redirect("/books");

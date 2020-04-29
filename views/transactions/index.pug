@@ -1,9 +1,9 @@
 extends ../../layouts/common.pug
 block content
-  div(class="container")
+  .container
     h3 Transaction
-    a(class="d-inline-block mb-2", href="/") Back
+    a.d-inline-block.mb-2(href="/") Back
 
-    div(class="list-group")
-      a(class="list-group-item", href="/transactions/show") List transaction
-      a(class="list-group-item", href="/transactions/create") Create new transaction
+    .list-group
+      a.list-group-item(href="/transactions/show") List transaction
+      a.list-group-item(href="/transactions/create") Create new transaction

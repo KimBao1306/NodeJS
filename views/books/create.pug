@@ -1,11 +1,11 @@
 extends ../../layouts/common.pug
 block content
-  div(class="container")
+  .container
     h3 Create new book
-    a(class="d-inline-block mb-2", href="/books") Back
+    a(.d-inline-block.mb-2(href="/books") Back
     form(action="/books/create", method="post")
-      div(class="form-group")
-        input(class="form-control", type='text', name="title", placeholder="Title Book")
-      div(class="form-group")
-        input(class="form-control", type='text', name="desc", placeholder="Description Book")
-      button(class="btn btn-primary") Create
+      .form-group
+        input.form-control(type='text', name="title", placeholder="Title Book")
+      .form-group
+        input.form-control(type='text', name="desc", placeholder="Description Book")
+      button.btn.btn-primary Create

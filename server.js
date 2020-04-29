@@ -16,7 +16,7 @@ app.set("views", "./views");
 //cài đặt middleware cho method post của form
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-//cài đặt folder tĩnh cho 
+//cài đặt folder tĩnh cho các file css, img, js
 app.use(express.static('public'))
 
 app.get("/", (req, res) => {

@@ -27,6 +27,10 @@ module.exports.delete = (req, res) => {
 module.exports.update = (req, res) => {
   const id = +req.params.id;
   const updateTrans = transactions.find(t => t.id === id);
+  if(!updateTrans) {
+    res.redirect('/transactions/show');
+    return;
+  }
   res.render("./transactions/update.pug", {
     updateTrans
   });
@@ -39,7 +43,6 @@ module.exports.updatePost = (req, res) => {
     .find({ id })
     .assign({ isComplete })
     .write();
-  console.log(db.get("transactions").value());
   res.redirect("/transactions/show");
 };
 

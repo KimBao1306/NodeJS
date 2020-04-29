@@ -3,7 +3,11 @@ block content
   .container
     h3 Create new user
     a.d-inline-block.mb-2(href="/users") Back
+    
+    if errors
+      each err in errors
+        .alert.alert-danger= err
     form(action="/users/create", method="post")
       .form-group
-        input.form-control(type='text', name="name", placeholder="Your name")
+        input.form-control(type='text', name="name", placeholder="Your name", value= values ? values.name : '' )
       button.btn.btn-primary Create

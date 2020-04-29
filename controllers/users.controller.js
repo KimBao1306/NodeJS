@@ -54,8 +54,9 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.createPost = (req, res) => {
-  const name = req.body.name;
+  const name = res.locals.name;
   const id = Date.parse(new Date());
+
   const newUser = { id, name };
   db.get("users")
     .push(newUser)

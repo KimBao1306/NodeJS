@@ -9,24 +9,20 @@ const routeUsers = require("./routes/users.route.js");
 const routeTransactions = require("./routes/transactions.route.js");
 
 const app = express();
-
+//cài view engine pug cho project express
 app.set("view engine", "pug");
+//thư mục chứ layout - mặc định bắt đầu bằng ./wiew
 app.set("views", "./views");
+//cài đặt middleware cho method post của form
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(express.static("public"));
-//test
-const db = require("./db.js");
-
-const transactions = db.get("transactions").value();
-const users = db.get("users").value();
-const books = db.get("books").value();
-//test=end
+//cài đặt folder tĩnh cho 
+app.use(express.static('public'))
 
 app.get("/", (req, res) => {
   res.render("index.pug");
 });
-
+//dùng method use để thực thi các route 
 app.use("/books", routeBooks);
 app.use("/users", routeUsers);
 app.use("/transactions", routeTransactions);

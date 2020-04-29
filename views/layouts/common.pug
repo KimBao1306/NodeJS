@@ -1,14 +1,15 @@
 html
   head
+    link(rel="shorcut icon", type="img/png", href="/imgs/favicon.png")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
-    link(rel="stylesheet", href="custom.css")
+    link(rel="stylesheet", type="text/css", href="/css/custom.css")
   body
     .container-fluid
       .row.bg-primary
         .col-4
           h2.text-white Library
         .col-8
-          ul.nav.justify-content-end
+          ul.nav.justify-content-end.collapse.navbar-collaps
             li.nav-item
               a.nav-link.text-white(href="/books") Books
             li.nav-item

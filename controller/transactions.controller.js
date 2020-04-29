@@ -10,8 +10,37 @@ module.exports.index = (req, res) => {
 
 module.exports.show = (req, res) => {
   res.render("./transactions/show.pug", {
-    transactions
+    transactions,
+    users,
+    books
   });
+};
+
+module.exports.delete = (req, res) => {
+  const id = +req.params.id;
+  db.get("transactions")
+    .remove({ id })
+    .write();
+  res.redirect("/transactions/show");
+};
+
+module.exports.update = (req, res) => {
+  const id = +req.params.id;
+  const updateTrans = transactions.find(t => t.id === id);
+  res.render("./transactions/update.pug", {
+    updateTrans
+  });
+};
+
+module.exports.updatePost = (req, res) => {
+  const id = +req.params.id;
+  const isComplete = +req.body.isComplete;
+  db.get("transactions")
+    .find({ id })
+    .assign({ isComplete })
+    .write();
+  console.log(db.get("transactions").value());
+  res.redirect("/transactions/show");
 };
 
 module.exports.create = (req, res) => {
@@ -21,12 +50,12 @@ module.exports.create = (req, res) => {
   });
 };
 
-module.exports.createResult = (req, res) => {
-  const idBook = req.body.book;
-  const idUser = req.body.user;
+module.exports.createPost = (req, res) => {
   const id = Date.parse(new Date());
-
-  const newTrans = { id, idUser, idBook };
+  const idUser = +req.body.user;
+  const idBook = +req.body.book;
+  const isComplete = 0;
+  const newTrans = { id, idUser, idBook, isComplete };
   db.get("transactions")
     .push(newTrans)
     .write();

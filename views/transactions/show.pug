@@ -5,11 +5,27 @@ table(style="width: 100%; table-layout: fixed;")
   thead
     tr
       th ID 
-      th ID User
-      th ID Book
+      th Username
+      th Book
+      th Complete
   tbody
     each trans in transactions
       tr
           td= trans.id
-          td= trans.idUser
-          td= trans.idBook
+          
+          each user in users
+            if(user.id === trans.idUser) 
+              td= user.name
+            else 
+              td Anonymous
+            
+          each book in books
+            if(book.id === trans.idBook) 
+              td= book.title
+            else 
+              td Anonymous       
+          td= (trans.isComplete) ? 'True' : 'False' 
+            span &nbsp;
+            a(href=`/transactions/${trans.id}/update`) Update
+            span &nbsp;
+            a(href=`/transactions/${trans.id}/delete`) Delete            

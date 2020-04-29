@@ -12,29 +12,29 @@ module.exports.show = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = +req.params.id;
   db.get("users")
     .remove({ id })
     .write();
-  res.redirect("/user/show");
+  res.redirect("/users/show");
 };
 
 module.exports.update = (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = +req.params.id;
   const updateUser = users.find(u => u.id === id);
   res.render("./users/update.pug", {
     updateUser
   });
 };
 
-module.exports.updateResult = (req, res) => {
-  const id = parseInt(req.query.id);
-  const newName = req.query.name;
+module.exports.updatePost = (req, res) => {
+  const id = +req.params.id;
+  const newName = req.body.name;
   db.get("users")
     .find({ id })
     .assign({ name: newName })
     .write();
-  res.redirect("/user/show");
+  res.redirect("/users/show");
 };
 
 module.exports.search = (req, res) => {
@@ -44,14 +44,16 @@ module.exports.search = (req, res) => {
 module.exports.searchResult = (req, res) => {
   const name = req.query.name.toLowerCase();
   const matchedUsers = users.filter(u => u.name.toLowerCase().includes(name));
-  res.redirect("/users/show");
+  res.render("./users/show.pug", {
+    users: matchedUsers
+  });
 };
 
 module.exports.create = (req, res) => {
   res.render("./users/create.pug");
 };
 
-module.exports.createResult = (req, res) => {
+module.exports.createPost = (req, res) => {
   const name = req.body.name;
   const id = Date.parse(new Date());
   const newUser = { id, name };

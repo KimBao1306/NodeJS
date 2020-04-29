@@ -7,12 +7,11 @@ route.get("/", controller.index);
 
 route.get("/show", controller.show);
 
-route.get("/delete/:id", controller.delete);
+route.get("/:id/delete", controller.delete);
 
-//nếu để sau :/books/update/:id thì
-route.get("/update/result", controller.updateResult);
+route.get("/:id/update", controller.update);
 
-route.get("/update/:id", controller.update);
+route.post("/:id/update", controller.updatePost);
 
 route.get("/search", controller.search);
 
@@ -20,6 +19,6 @@ route.get("/search/result", controller.searchResult);
 
 route.get("/create", controller.create);
 
-route.post("/create/result", controller.createResult);
+route.post("/create", controller.createPost);
 
 module.exports = route;

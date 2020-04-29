@@ -1,0 +1,9 @@
+h3 Update your transaction
+
+a(href="/transactions/show") Back
+
+form(action=`/transactions/${updateTrans.id}/update`, method="post")
+  select(name="isComplete")
+    option(value= "1", selected= updateTrans.isComplete === 1)  true
+    option(value= "0", selected= updateTrans.isComplete === 0) false
+  button Update

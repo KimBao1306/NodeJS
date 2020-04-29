@@ -2,7 +2,6 @@ h3 Update your user
 
 a(href='/users') Back
 
-form(action='/users/update/result', method="get")
+form(action=`/users/${updateUser.id}/update`, method="post")
   input(type='text', name="name", placeholder="Your new name", value=`${updateUser.name}`)
-  input(type='hidden', name="id", value=`${updateUser.id}`)
   button Update

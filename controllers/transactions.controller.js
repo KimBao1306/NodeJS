@@ -10,7 +10,7 @@ module.exports.index = (req, res) => {
 
 module.exports.show = (req, res) => {
   res.render("./transactions/show.pug", {
-    transactions,
+    transactions: transactions.filter(t => t.idUser === +req.cookies.idUser),
     users,
     books
   });
@@ -26,9 +26,12 @@ module.exports.delete = (req, res) => {
 
 module.exports.update = (req, res) => {
   const id = +req.params.id;
-  const updateTrans = transactions.find(t => t.id === id);
-  if(!updateTrans) {
-    res.redirect('/transactions/show');
+  const updateTrans = db
+    .get("transactions")
+    .find({ id })
+    .value();
+  if (!updateTrans) {
+    res.redirect("/transactions/show");
     return;
   }
   res.render("./transactions/update.pug", {
@@ -48,7 +51,7 @@ module.exports.updatePost = (req, res) => {
 
 module.exports.create = (req, res) => {
   res.render("./transactions/create.pug", {
-    users,
+    users: [users.find(u => u.id === +req.cookies.idUser)],
     books
   });
 };

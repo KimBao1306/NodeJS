@@ -1,0 +1,47 @@
+{
+  "books": [
+    {
+      "id": 1587653518000,
+      "title": "Học lập trình miễn phí tại CodersX",
+      "desc": "Cùng nhau học thất tốt"
+    },
+    {
+      "id": 1587997442000,
+      "title": "Đắc Nhân Tâm",
+      "desc": "Sách Đắc Nhân Tâm đem lại kiến thức cho bạn"
+    }
+  ],
+  "users": [
+    {
+      "id": 1588093540000,
+      "name": "Kim Bao Admin",
+      "email": "admin@gmail.com",
+      "password": "$2b$08$CElzrdjO3Oe1wENWWLb/jedHa3Z4.ETNoKG1KDXw2RhwTo77FTz2W",
+      "isAdmin": 1
+    },
+    {
+      "id": 1588094580000,
+      "name": "Kim Bao C",
+      "email": "c@yahoo.com",
+      "password": "$2b$08$QKy10nx0HjzcYU7KziJ9cuqU.xck/DoEUnYW77jM33nmL6DQnNByO",
+      "isAdmin": 0,
+      "wrongLoginCount": 0
+    },
+    {
+      "id": 1588096065000,
+      "name": "Kim Bao A",
+      "email": "a@yahoo.com",
+      "password": "$2b$08$73b.76.vTPEZbSczH7v.c.ySRh1mVJu9dYMgk1O3USqKN.dHuOkxC",
+      "isAdmin": 0,
+      "wrongLoginCount": 0
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1588068636000,
+      "idUser": 1588068524000,
+      "idBook": 1587653518000,
+      "isComplete": 0
+    }
+  ]
+}

@@ -11,7 +11,7 @@ block content
           th Book
           th Complete
           th
-      each trans in transactions
+      each trans in transactionsById
         tr
           th= trans.id
           
@@ -26,9 +26,9 @@ block content
           break
     
           td= (trans.isComplete) ? 'True' : 'False' 
-          
-          td
-            span &nbsp;
-            a(href=`/transactions/${trans.id}/delete`) Delete
-            span &nbsp;
-            a(href=`/transactions/${trans.id}/update`) Update
+          if(user.isAdmin === 'admin')
+            td
+              span &nbsp;
+              a(href=`/transactions/${trans.id}/delete`) Delete
+              span &nbsp;
+              a(href=`/transactions/${trans.id}/update`) Update

@@ -1,52 +1,65 @@
-const db = require("../db.js");
-const books = db.get("books").value();
+const cloudinary = require("cloudinary").v2;
+
+const Book = require("../models/book.model.js");
 
 module.exports.index = (req, res) => {
   res.render("./books/index.pug");
 };
 
-module.exports.show = (req, res) => {
+module.exports.show = async (req, res) => {
+  const booksP = req.params.idShop
+    ? Book.find({ "shop.idShop": req.params.idShop })
+    : Book.find();
+
+  const books = await booksP;
+
   res.render("./books/show.pug", {
-    books
+    books,
+    title: "Library"
   });
 };
 
-module.exports.delete = (req, res) => {
-  const id = +req.params.id;
-  db.get("books")
-    .remove({ id })
-    .write();
-  res.redirect("/books/show");
+module.exports.delete = async (req, res) => {
+  const _id = req.params.id;
+
+  await Book.deleteOne({ _id });
+
+  res.redirect(`/books/${res.locals.user.id}/show`);
 };
 
-module.exports.update = (req, res) => {
-  const id = +req.params.id;
-  const updateBook = books.find(book => book.id === id);
+module.exports.update = async (req, res) => {
+  const _id = req.params.id;
+
+  const updateBook = await Book.findOne({ _id });
+
   res.render("./books/update.pug", {
     updateBook
   });
 };
 
-module.exports.updatePost = (req, res) => {
-  const id = +req.params.id;
+module.exports.updatePost = async (req, res) => {
+  const _id = req.params.id;
   const newTitle = req.body.title;
   const newDesc = req.body.desc;
-  db.get("books")
-    .find({ id })
-    .assign({ title: newTitle, desc: newDesc })
-    .write();
-  res.redirect("/books/show");
+
+  await Book.updateOne({ _id }, { title: newTitle, desc: newDesc });
+
+  res.redirect(`/books/${res.locals.user.id}/show`);
 };
 
 module.exports.search = (req, res) => {
   res.render("./books/search.pug");
 };
 
-module.exports.searchResult = (req, res) => {
+module.exports.searchResult = async (req, res) => {
   const title = req.query.keyword.toLowerCase();
+
+  const books = await Book.find();
+
   const matchedBooks = books.filter(book =>
     book.title.toLowerCase().includes(title)
   );
+
   res.render("./books/show.pug", {
     books: matchedBooks
   });
@@ -56,13 +69,23 @@ module.exports.create = (req, res) => {
   res.render("./books/create.pug");
 };
 
-module.exports.createPost = (req, res) => {
+module.exports.createPost = async (req, res) => {
   const title = req.body.title;
   const desc = req.body.desc;
-  const id = Date.parse(new Date());
-  const newBook = { id, title, desc };
-  db.get("books")
-    .push(newBook)
-    .write();
-  res.redirect('/books/show');
+  const shop = { idShop: res.locals.user.id, name: res.locals.user.name };
+
+  let coverUrl =
+    "https://res.cloudinary.com/bao-codersx/image/upload/v1588414918/coverBook_rhne73.jpg";
+
+  if (req.file) {
+    const path = req.file.path;
+
+    const cloud = await cloudinary.uploader.upload(`./${path}`);
+
+    coverUrl = cloud.url;
+  }
+
+  await Book.create({ title, desc, shop, coverUrl });
+
+  res.redirect(`/books/${res.locals.user.id}/show`);
 };

@@ -1,0 +1,18 @@
+extends ../layouts/common.pug
+block content
+  .container
+    h3 Update your profile
+    a.d-inline-block.mb-2(href="/") Back
+    .text-center
+      img.rounded(src= user.avatarUrl, style="width: 64px")
+    form(action=`/profile/${user.id}`, method="post", enctype="multipart/form-data")
+      .form-group
+        label Email
+        input.form-control(type="email", name="email", placeholder="Your new name", value=`${user.email}`, readonly)
+      .form-group
+        label Name
+        input.form-control(type="text", name="name", placeholder="Your new name", value=`${user.name}`)
+      .form-group
+        label Avatar
+        input.form-control-file(type="file", name="avatar")
+      button.btn.btn-primary Update

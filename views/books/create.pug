@@ -3,9 +3,15 @@ block content
   .container
     h3 Create new book
     a.d-inline-block.mb-2(href="/books") Back
-    form(action="/books/create", method="post")
+    
+    if errors
+      each err in errors
+        .alert.alert-danger= err
+    form(action="/books/create", method="post", enctype="multipart/form-data")
       .form-group
         input.form-control(type='text', name="title", placeholder="Title Book")
       .form-group
         input.form-control(type='text', name="desc", placeholder="Description Book")
+      .form-group
+        input.form-control-file(type="file", name="cover")
       button.btn.btn-primary Create

@@ -6,4 +6,5 @@ block content
     ul.list-group
       a.list-group-item(href="/books/show") List books
       a.list-group-item(href="/books/search") Search books
-      a.list-group-item(href="/books/create") Create a new book
+      if (user && user.isAdmin === 'admin')
+        a.list-group-item(href="/books/create") Create a new book

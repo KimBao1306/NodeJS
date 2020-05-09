@@ -8,12 +8,15 @@ block content
       thead
         tr
           th ID 
+          th Avatar
           th Name
           th
       tbody
          each user in users
           tr
               th= user.id
+              td
+                img(src= user.avatarUrl, width= "50px", height= "50px")
               td= user.name
               td
                 span &nbsp;

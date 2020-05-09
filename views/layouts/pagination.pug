@@ -1,0 +1,43 @@
+if(totalPage > 1)
+  nav
+    ul.pagination.justify-content-center
+      li.page-item(class= (page === 1) ? 'disabled' : '')
+        a.page-link(href=`/${routeName}/show?page=1`)
+          span(aria-hidden="true") &laquo;
+          span.sr-only Previous
+      li.page-item(class= (page === 1) ? 'disabled' : '')
+        a.page-link(href=`/${routeName}/show?page=${page - 1}`)
+          span(aria-hidden="true") &lsaquo;
+          span.sr-only Previous
+    
+      if(page < 6)
+        -for(let i = 1; i < 6; i++)
+          li.page-item(class= (i === page) ? 'active' : '')
+            a.page-link(href=`/${routeName}/show?page=${i}`)= i
+
+      if(page >= 6 && page < totalPage)
+        li.page-item
+          a.page-link(href=`/${routeName}/show?page=${page - 2}`)= page - 2
+        li.page-item
+          a.page-link(href=`/${routeName}/show?page=${page - 1}`)= page - 1
+        li.page-item.active
+          a.page-link(href=`/${routeName}/show?page=${page}`)= page
+        li.page-item
+          a.page-link(href=`/${routeName}/show?page=${page + 1}`)= page + 1
+        if(totalPage - 1 !== page)  
+          li.page-item
+            a.page-link(href=`/${routeName}/show?page=${page + 2}`)= page + 2
+      
+      if(page === totalPage)
+        -for(let i = totalPage - 4; i <= totalPage; i++)
+          li.page-item(class= (i === page) ? 'active' : '')
+            a.page-link(href=`/${routeName}/show?page=${i}`)= i
+     
+      li.page-item(class= (page === totalPage) ? 'disabled' : '')
+        a.page-link(href=`/${routeName}/show?page=${page + 1}`)
+          span(aria-hidden="true") &rsaquo;
+          span.sr-only Next
+      li.page-item(class= (page === totalPage) ? 'disabled' : '')
+        a.page-link(href=`/${routeName}/show?page=${totalPage}`)
+          span(aria-hidden="true") &raquo;
+          span.sr-only Next

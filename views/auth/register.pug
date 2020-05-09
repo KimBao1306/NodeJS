@@ -1,0 +1,16 @@
+extends ../layouts/common.pug
+block content
+  .container
+    h3 Register Account
+    
+    if errors
+      each err in errors
+        .alert.alert-danger= err
+    form(action="/auth/register", method="post")
+      .form-group
+        input.form-control(type='text', name="name", placeholder="Your name", value= values ? values.name : '' )
+      .form-group
+        input.form-control(type='email', name="email", placeholder="Your email", value= values ? values.email : '' )
+      .form-group
+        input.form-control(type='password', name="password", placeholder="Your password")
+      button.btn.btn-primary Register

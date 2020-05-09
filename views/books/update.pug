@@ -3,7 +3,10 @@ block content
   .container
     h3 Update your books
     a.d-inline-block.mb-2(href="/books") Back
-
+    
+    if errors
+      each err in errors
+        .alert.alert-danger= err
     form(action=`/books/${updateBook.id}/update`, method="post")
       .form-group
         input.form-control(type='text', name="title", placeholder="Your new title", value=`${updateBook.title}`)

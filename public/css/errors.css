@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+.error-page {
+  width: 800px;
+}
+
+.error-page > .headline {
+  font-size: 120px;
+  font-weight: 300;
+}
+
+.error-page > .error-content > h3 {
+  font-size: 40px;
+  font-weight: 300;
+}

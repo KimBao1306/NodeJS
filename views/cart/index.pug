@@ -1,0 +1,29 @@
+extends ../layouts/common.pug
+block content
+  .container
+   .card.shopping-cart
+    .card-header.bg-dark.text-light
+      i.fa.fa-shopping-cart(aria-hidden="true") Shopping cart
+      .clearfix
+    .card-body
+      each book in books
+        each idBook in cart
+          if(idBook === book.id)
+            .row
+              .col-12.col-sm-12.col-md-2.text-center
+                img.img-responsive(src=`${book.coverUrl}`, alt="prewiew", width="120", height="80")
+              .col-12.text-sm-center.col-sm-12.text-md-left.col-md-6
+                  h4.product-name
+                    strong= book.title
+                  h4
+                    span Description: 
+                    small= book.desc
+                  h4
+                    span Shop: 
+                    small= book.shop || 'Admin'
+              .col-12.col-sm-12.text-sm-center.col-md-4.text-md-right.row
+                .col-12.col-sm-12.col-md-12.text-md-right(style="padding-top: 5px")
+            hr
+      
+      .d-flex.justify-content-end(style="margin: 10px")
+          a.btn.btn-success.pull-right(href="/transactions/createInCart") Checkout

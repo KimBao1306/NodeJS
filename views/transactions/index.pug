@@ -4,4 +4,5 @@ block content
     h3.mb-3 Transaction
     .list-group
       a.list-group-item(href="/transactions/show") List transaction
-      a.list-group-item(href="/transactions/create") Create new transaction
+      if(user && user.isAdmin === 'admin')
+        a.list-group-item(href="/transactions/create") Create new transaction
